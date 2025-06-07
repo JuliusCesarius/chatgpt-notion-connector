@@ -1,4 +1,2 @@
 notion-client
 openai
-fastapi
-uvicorn[standard]
