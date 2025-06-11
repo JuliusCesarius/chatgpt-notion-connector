@@ -17,6 +17,12 @@ pip install -r requirements.txt
 
 You can export them in your shell or create a `.env` file and load it before running the script.
 
+For development, run the unit tests with:
+
+```bash
+pytest
+```
+
 ## Usage
 
 Run a search query against your connected Notion workspace from the command line:
@@ -38,4 +44,6 @@ uvicorn src.server:app --reload
 ```
 
 The repository also contains a small HTML client in the `web` directory. You can
-serve this folder with GitHub Pages so it can call the running server.
+host this folder with GitHub Pages and set the form's fetch URL to your deployed
+API server.
+The server enables CORS so the client can access it from another domain.

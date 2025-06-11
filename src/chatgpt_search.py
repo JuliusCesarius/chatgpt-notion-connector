@@ -4,7 +4,9 @@ from typing import List, Dict, Any
 import openai
 
 
-def search_with_chatgpt(query: str, pages: List[Dict[str, Any]], model: str = "gpt-3.5-turbo") -> str:
+def search_with_chatgpt(
+    query: str, pages: List[Dict[str, Any]], model: str = "gpt-3.5-turbo"
+) -> str:
     """Use ChatGPT to perform semantic search over Notion page contents.
 
     Each page dict can contain ``title`` and optional ``content`` fields. The

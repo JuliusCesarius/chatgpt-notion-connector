@@ -12,8 +12,15 @@ class SearchController:
         pages = self.notion.search(query)
         formatted = []
         for page in pages:
-            title_prop = page.get('properties', {}).get('title', {}).get('title', [])
-            title = title_prop[0]['plain_text'] if title_prop else 'Untitled'
-            content = self.notion.get_page_text(page['id'])
-            formatted.append({'id': page['id'], 'title': title, 'content': content})
+            props = page.get("properties", {}).get("title", {})
+            title_data = props.get("title", [])
+            title = title_data[0]["plain_text"] if title_data else "Untitled"
+            content = self.notion.get_page_text(page["id"])
+            formatted.append(
+                {
+                    "id": page["id"],
+                    "title": title,
+                    "content": content,
+                }
+            )
         return search_with_chatgpt(query, formatted)

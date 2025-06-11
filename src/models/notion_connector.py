@@ -2,6 +2,7 @@ import os
 from typing import List, Dict, Any
 from notion_client import Client
 
+
 class NotionConnector:
     """Simple wrapper around the Notion API."""
 
@@ -9,7 +10,8 @@ class NotionConnector:
         self.token = token or os.getenv("NOTION_TOKEN")
         if not self.token:
             raise ValueError(
-                "Notion API token must be provided via argument or NOTION_TOKEN env variable"
+                "Notion API token must be provided via argument or "
+                "NOTION_TOKEN env variable"
             )
         self.client = Client(auth=self.token)
 
@@ -53,4 +55,4 @@ class NotionConnector:
 
         blocks = _collect(page_id)
         lines = [self._extract_text(b) for b in blocks]
-        return "\n".join(l for l in lines if l)
+        return "\n".join(line for line in lines if line)
